@@ -28,7 +28,7 @@
             <a class="nav-link" aria-current="page" href="index.php">Feedback Form</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="feedback.php">Features</a>
+            <a class="nav-link" href="feedback.php">Past Feedbacks</a>
           </li>
         </ul>
       </div>

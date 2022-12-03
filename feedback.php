@@ -19,7 +19,7 @@
       <!-- Add image if exist -->
       <?php if(empty($row['image'])): ?>
       <div class="feedback-image">
-        <img class="image" src="res/Yummy_Restaurant_Banner.png"/>
+        <!-- <img class="image" src="res/Yummy_Restaurant_Banner.png"/> -->
       </div>
       <?php endif; ?>
 
@@ -37,6 +37,12 @@
 
   <?php endforeach; ?>
 
+<?php else: ?>
+
+  <div class="NoFeedback"> Currently there is no feedback.</div>
+
 <?php endif; ?>
+
+
 
 <?php include 'include/footer.php' ?>
