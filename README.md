@@ -1,4 +1,4 @@
-# Resturant feedback app
+# Restaurant feedback app
 
  Technologies:
  - PHP
