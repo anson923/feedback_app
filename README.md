@@ -1,2 +1,7 @@
-# ResturantFeedBack
- PHP functional AWS RDS Feedback app
+# Resturant feedback app
+
+ Technologies:
+ - PHP
+ - HTML
+ - Amazon AWS RDS (Amazon Relational Database Service)
+ 
