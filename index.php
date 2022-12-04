@@ -1,26 +1,33 @@
-<?php include 'include/header.php' ?>
+<?php   
+  ob_start();
+  include 'include/header.php'?>
 
 <?php
-
 //POST submit
 $allowed_ext = array('png', 'jpg', 'jpeg');
 $allowed_ext_str = implode( ',', $allowed_ext );
 if (isset($_POST['submit'])) {
   $name = $nameErr = $email = $feedback = $feedbackErr = $image = $imageErr = "";
+  $isEmptyImage = empty($_FILES['upload']);
 
-  if (!empty($_FILES['upload'])) {
+  if (!$isEmptyImage) {
     //Check extension
     $path = $_FILES['upload']['name'];
     $ext = pathinfo($path, PATHINFO_EXTENSION);
-    if (in_array($ext, $allowed_ext)) {
-      $file_tmp = $_FILES['upload']['tmp_name'];
-      $img = file_get_contents($file_tmp);
-      $data = base64_encode($img); 
-      $image = $data;
+    if($path && $ext)
+    {
+      if (in_array($ext, $allowed_ext)) {
+        $file_tmp = $_FILES['upload']['tmp_name'];
+        $img = file_get_contents($file_tmp);
+        $data = base64_encode($img); 
+        $image = $data;
+      }
+      else
+      {
+        $imageErr = "<p style='color:red'> File Type is not a supported image type({$allowed_ext_str})</p>";
+      }
     }
   }
-
-  $imageErr = empty($_FILES['upload']) || !in_array($ext, $allowed_ext) ? "<p style='color:red'> File Type is not a supported image type({$allowed_ext_str}) </p>" : "";
   $nameErr = empty($_POST['name']) ? "<p style='color:red'> Name cannot be empty </p>" : "";
   $feedbackErr = empty($_POST['feedback']) ? "<p style='color:red'> Feedback cannot be empty </p>" : "";
 
@@ -34,10 +41,11 @@ if (isset($_POST['submit'])) {
     if($result = mysqli_query($conn,$sql))
     {
       header('Location: feedback.php');
+      ob_end_flush();
+      die();
     }
   }
 }
-
 ?>
 
 <div class="feedback-form">
@@ -82,4 +90,4 @@ if (isset($_POST['submit'])) {
   </div>
 </div>
 
-<?php include 'include/footer.php' ?>
+<?php include 'include/footer.php'?>
