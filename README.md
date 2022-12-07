@@ -1,6 +1,6 @@
 # Restaurant feedback app
 
-Visit: https://yummyfeedback.000webhostapp.com/index.php
+Visit (*database is not working since it has reached its limit, the dababase has been stopped): https://yummyfeedback.000webhostapp.com/index.php
 
  Technologies:
  - PHP
